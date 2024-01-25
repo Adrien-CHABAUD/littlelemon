@@ -41,11 +41,6 @@ struct Menu: View {
         
         let task = URLSession.shared.dataTask(with: urlRequest) {data,response,error in
             if let data = data {
-                do{
-                    let tmp = try JSONDecoder().decode(MenuList.self, from: data)
-                } catch {
-                    print(error)
-                }
                 if let fullMenu = try? JSONDecoder().decode(MenuList.self, from: data){
                     for dish in fullMenu.menu {
                         let newDish = Dish(context: viewContext)

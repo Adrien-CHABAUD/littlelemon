@@ -17,14 +17,18 @@ struct DishItem: View {
                 Text(dish.title ?? "")
                 Text(dish.descriptionDish ?? "")
                 Text("$" + (dish.price ?? ""))
-                AsyncImage(url: URL(string: dish.image ?? "")){ image in
-                    image.image?
+                
+                AsyncImage(url: URL(string: dish.image ?? " ")){ image in
+                    image
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                     
+                } placeholder: {
+                    ProgressView()
                 }
-                .frame(maxWidth: 90, maxHeight: 90)
-                .clipShape(Rectangle())
+                    .frame(maxWidth: 90, maxHeight: 90)
+                    .clipShape(Rectangle())
+
             }
         }
     }
