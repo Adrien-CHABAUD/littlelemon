@@ -15,9 +15,19 @@ struct DishItem: View {
         HStack {
             VStack {
                 Text(dish.title ?? "")
-                Text(dish.descriptionDish ?? "")
-                Text("$" + (dish.price ?? ""))
+                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
                 
+                Spacer(minLength: 10)
+                
+                Text(dish.descriptionDish ?? "")
+                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                    .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+                
+                Spacer(minLength: 5)
+                
+                Text("$" + (dish.price ?? ""))
+                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+
                 AsyncImage(url: URL(string: dish.image ?? " ")){ image in
                     image
                         .resizable()
@@ -31,6 +41,8 @@ struct DishItem: View {
 
             }
         }
+        .padding(.vertical)
+        .frame(maxHeight: 150)
     }
 }
 
