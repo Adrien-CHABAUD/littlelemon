@@ -10,7 +10,6 @@
 		E92710562B61E17B00BCCFAB /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92710552B61E17B00BCCFAB /* MenuItem.swift */; };
 		E92710582B61E24500BCCFAB /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92710572B61E24500BCCFAB /* Onboarding.swift */; };
 		E9F4460D2B5E113400AF30AA /* Little_LemonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F4460C2B5E113400AF30AA /* Little_LemonApp.swift */; };
-		E9F4460F2B5E113400AF30AA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F4460E2B5E113400AF30AA /* ContentView.swift */; };
 		E9F446112B5E113500AF30AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9F446102B5E113500AF30AA /* Assets.xcassets */; };
 		E9F446142B5E113500AF30AA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9F446132B5E113500AF30AA /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -20,7 +19,6 @@
 		E92710572B61E24500BCCFAB /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		E9F446092B5E113400AF30AA /* Little Lemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Little Lemon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9F4460C2B5E113400AF30AA /* Little_LemonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Little_LemonApp.swift; sourceTree = "<group>"; };
-		E9F4460E2B5E113400AF30AA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E9F446102B5E113500AF30AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9F446132B5E113500AF30AA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,7 +55,6 @@
 			children = (
 				E92710552B61E17B00BCCFAB /* MenuItem.swift */,
 				E9F4460C2B5E113400AF30AA /* Little_LemonApp.swift */,
-				E9F4460E2B5E113400AF30AA /* ContentView.swift */,
 				E92710572B61E24500BCCFAB /* Onboarding.swift */,
 				E9F446102B5E113500AF30AA /* Assets.xcassets */,
 				E9F446122B5E113500AF30AA /* Preview Content */,
@@ -144,7 +141,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E92710562B61E17B00BCCFAB /* MenuItem.swift in Sources */,
-				E9F4460F2B5E113400AF30AA /* ContentView.swift in Sources */,
 				E92710582B61E24500BCCFAB /* Onboarding.swift in Sources */,
 				E9F4460D2B5E113400AF30AA /* Little_LemonApp.swift in Sources */,
 			);
