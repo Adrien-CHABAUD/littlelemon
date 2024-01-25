@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Menu: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     var body: some View {
         VStack {
             Text("Little Lemon")
@@ -24,7 +26,7 @@ struct Menu: View {
         
         let urlRequest = URLRequest(url: url)
         
-        var task = URLSession.shared.dataTask(with: urlRequest) {data,response,error in
+        let task = URLSession.shared.dataTask(with: urlRequest) {data,response,error in
             if let data = data {
                 let fullMenu = try? JSONDecoder().decode(MenuList.self, from: data)
                 
