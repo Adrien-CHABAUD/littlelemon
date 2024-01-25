@@ -24,10 +24,13 @@ struct UserProfile: View {
             Text("\(email ?? "")")
             
             Button{
-                
+                UserDefaults.standard.set(false, forKey: "kIsLoggedIn")
+                self.presentation.wrappedValue.dismiss()
             } label: {
                 Text("Logout")
             }
+            
+            Spacer()
         }
     }
 }
