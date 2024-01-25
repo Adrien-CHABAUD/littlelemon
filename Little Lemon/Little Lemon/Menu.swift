@@ -11,12 +11,23 @@ struct Menu: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     var body: some View {
-        VStack {
-            Text("Little Lemon")
-            Text("Chicago")
-            Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
-        }
-        .onAppear(){
+        NavigationStack {
+            VStack {
+                VStack {
+                    Text("Little Lemon")
+                    Text("Chicago")
+                    Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
+                }
+                
+                FetchedObjects() { (dishes: [Dish]) in
+                    List {
+                        ForEach(dishes) { dish in
+                            DishItem(dish: dish)
+                        }
+                    }
+                }
+            }
+        }.onAppear(){
             getMenuData()
         }
     }
@@ -30,12 +41,17 @@ struct Menu: View {
         
         let task = URLSession.shared.dataTask(with: urlRequest) {data,response,error in
             if let data = data {
+                do{
+                    let tmp = try JSONDecoder().decode(MenuList.self, from: data)
+                } catch {
+                    print(error)
+                }
                 if let fullMenu = try? JSONDecoder().decode(MenuList.self, from: data){
-                    for dish in fullMenu.menuItem {
+                    for dish in fullMenu.menu {
                         let newDish = Dish(context: viewContext)
                         newDish.title = dish.title
                         newDish.price = dish.price
-                        newDish.descrip = dish.descrip
+                        newDish.descriptionDish = dish.description
                         newDish.category = dish.category
                         newDish.image = dish.image
                         newDish.id = dish.id
@@ -53,5 +69,5 @@ struct Menu: View {
 }
 
 #Preview {
-    Menu()
+    Menu().environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
 }

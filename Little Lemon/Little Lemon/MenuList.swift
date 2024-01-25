@@ -7,6 +7,10 @@
 
 import Foundation
 
-struct MenuList: Decodable {
-    let menuItem: [MenuItem]
+struct MenuList: Codable {
+    let menu: [MenuItem]
+    
+    enum CodingKeys: String, CodingKey {
+        case menu = "menu"
+    }
 }
