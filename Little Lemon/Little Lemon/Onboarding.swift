@@ -8,7 +8,8 @@
 let kFirstName = "firstNameKey"
 let kLastName = "lastNameKey"
 let kEmail = "emailKey"
-let kIsLoggedIn = "LoggedInKey"
+
+let kIsLoggedIn = "kIsLoggedIn"
 
 import SwiftUI
 
@@ -44,6 +45,11 @@ struct Onboarding: View {
                 })
                 .navigationDestination(isPresented: $isLoggedIn) {
                     Home()
+                }
+            }
+            .onAppear(){
+                if(UserDefaults.standard.bool(forKey: kIsLoggedIn)){
+                    isLoggedIn = true
                 }
             }
         }

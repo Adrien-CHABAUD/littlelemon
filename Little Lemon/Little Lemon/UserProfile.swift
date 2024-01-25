@@ -12,6 +12,8 @@ struct UserProfile: View {
     let lastName = UserDefaults.standard.string(forKey: "lastNameKey")
     let email = UserDefaults.standard.string(forKey: "emailKey")
     
+    @Environment(\.presentationMode) var presentation
+    
     var body: some View {
         VStack {
             Text("Personal Information")
@@ -20,6 +22,12 @@ struct UserProfile: View {
             Text("\(firstName ?? "")")
             Text("\(lastName ?? "")")
             Text("\(email ?? "")")
+            
+            Button{
+                
+            } label: {
+                Text("Logout")
+            }
         }
     }
 }
