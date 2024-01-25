@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E92710562B61E17B00BCCFAB /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92710552B61E17B00BCCFAB /* MenuItem.swift */; };
+		E92710582B61E24500BCCFAB /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92710572B61E24500BCCFAB /* Onboarding.swift */; };
 		E9F4460D2B5E113400AF30AA /* Little_LemonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F4460C2B5E113400AF30AA /* Little_LemonApp.swift */; };
 		E9F4460F2B5E113400AF30AA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F4460E2B5E113400AF30AA /* ContentView.swift */; };
 		E9F446112B5E113500AF30AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9F446102B5E113500AF30AA /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		E92710552B61E17B00BCCFAB /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		E92710572B61E24500BCCFAB /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		E9F446092B5E113400AF30AA /* Little Lemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Little Lemon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9F4460C2B5E113400AF30AA /* Little_LemonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Little_LemonApp.swift; sourceTree = "<group>"; };
 		E9F4460E2B5E113400AF30AA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,11 +55,12 @@
 		E9F4460B2B5E113400AF30AA /* Little Lemon */ = {
 			isa = PBXGroup;
 			children = (
+				E92710552B61E17B00BCCFAB /* MenuItem.swift */,
 				E9F4460C2B5E113400AF30AA /* Little_LemonApp.swift */,
 				E9F4460E2B5E113400AF30AA /* ContentView.swift */,
+				E92710572B61E24500BCCFAB /* Onboarding.swift */,
 				E9F446102B5E113500AF30AA /* Assets.xcassets */,
 				E9F446122B5E113500AF30AA /* Preview Content */,
-				E92710552B61E17B00BCCFAB /* MenuItem.swift */,
 			);
 			path = "Little Lemon";
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			files = (
 				E92710562B61E17B00BCCFAB /* MenuItem.swift in Sources */,
 				E9F4460F2B5E113400AF30AA /* ContentView.swift in Sources */,
+				E92710582B61E24500BCCFAB /* Onboarding.swift in Sources */,
 				E9F4460D2B5E113400AF30AA /* Little_LemonApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
