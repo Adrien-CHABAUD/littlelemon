@@ -8,6 +8,7 @@
 let kFirstName = "firstNameKey"
 let kLastName = "lastNameKey"
 let kEmail = "EmailKey"
+let kIsLoggedIn = "LoggedInKey"
 
 import SwiftUI
 
@@ -16,29 +17,35 @@ struct Onboarding: View {
     @State var lastName = ""
     @State var email = ""
     
+    @State var isLoggedIn = false
+    
     var body: some View {
-        VStack {
-            TextField("First Name", text: $firstName)
-            TextField("Last Name", text: $lastName)
-            TextField("Email", text: $email)
-            
-            Button(action: {
-                if(firstName.isEmpty || lastName.isEmpty || email.isEmpty) {
-                    // TO-DO: One of the TextField is empty
+        NavigationStack {
+            VStack {
                     
-                } else {
-                    
-                    if(ValidateEmail(email: email)) {
+                TextField("First Name", text: $firstName)
+                TextField("Last Name", text: $lastName)
+                TextField("Email", text: $email)
+                
+                Button(action: {
+                    if(!firstName.isEmpty || !lastName.isEmpty || !email.isEmpty && ValidateEmail(email: email)) {
+                        
                         UserDefaults.standard.set(firstName, forKey: kFirstName)
                         UserDefaults.standard.set(lastName, forKey: kLastName)
                         UserDefaults.standard.set(email, forKey: kEmail)
+                        UserDefaults.standard.set(true, forKey: kIsLoggedIn)
+                        isLoggedIn = true
+
                     } else {
-                        // TO-DO: Email is not correct
+                        isLoggedIn = false
                     }
+                }, label: {
+                    Text("Register")
+                })
+                .navigationDestination(isPresented: $isLoggedIn) {
+                    Home()
                 }
-            }, label: {
-                Text("Register")
-            })
+            }
         }
     }
     
