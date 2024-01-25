@@ -10,7 +10,7 @@ import Foundation
 struct MenuItem: Decodable {
     var id = UUID()
     let title: String
-    let image: Float
+    let image: String
     let price: String
     let descrip: String
     let category: String
