@@ -9,10 +9,28 @@ import SwiftUI
 
 struct Hero: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                VStack {
+                    Text("Little Lemon")
+                    Text("Chicago")
+                    Spacer()
+                    Text("We are a family owned Mediterranean restaurants, focused on traditional recipes served with a modern twist.")
+                }
+                Image("Hero_image")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(maxWidth: 120, maxHeight: 140)
+                    .clipShape(Rectangle())
+                    .cornerRadius(16)
+                
+                
+            }
+        }
     }
 }
 
 #Preview {
     Hero()
 }
+

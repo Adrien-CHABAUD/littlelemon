@@ -22,33 +22,35 @@ struct Onboarding: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                Header()
-                //Hero()
-                
+            ScrollView {
                 VStack {
-                    TextField("First Name", text: $firstName)
-                    TextField("Last Name", text: $lastName)
-                    TextField("Email", text: $email)
-                }
-                
-                Button(action: {
-                    if(!firstName.isEmpty || !lastName.isEmpty || !email.isEmpty && ValidateEmail(email: email)) {
-                        
-                        UserDefaults.standard.set(firstName, forKey: kFirstName)
-                        UserDefaults.standard.set(lastName, forKey: kLastName)
-                        UserDefaults.standard.set(email, forKey: kEmail)
-                        UserDefaults.standard.set(true, forKey: kIsLoggedIn)
-                        isLoggedIn = true
-                        
-                    } else {
-                        isLoggedIn = false
+                    Header()
+                    Hero()
+                    
+                    VStack {
+                        TextField("First Name", text: $firstName)
+                        TextField("Last Name", text: $lastName)
+                        TextField("Email", text: $email)
                     }
-                }, label: {
-                    Text("Register")
-                })
-                .navigationDestination(isPresented: $isLoggedIn) {
-                    Home()
+                    
+                    Button(action: {
+                        if(!firstName.isEmpty || !lastName.isEmpty || !email.isEmpty && ValidateEmail(email: email)) {
+                            
+                            UserDefaults.standard.set(firstName, forKey: kFirstName)
+                            UserDefaults.standard.set(lastName, forKey: kLastName)
+                            UserDefaults.standard.set(email, forKey: kEmail)
+                            UserDefaults.standard.set(true, forKey: kIsLoggedIn)
+                            isLoggedIn = true
+                            
+                        } else {
+                            isLoggedIn = false
+                        }
+                    }, label: {
+                        Text("Register")
+                    })
+                    .navigationDestination(isPresented: $isLoggedIn) {
+                        Home()
+                    }
                 }
             }
             .onAppear(){
