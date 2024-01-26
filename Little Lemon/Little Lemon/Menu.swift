@@ -61,6 +61,10 @@ struct Menu: View {
         
         task.resume()
     }
+    
+    func buildSortDescriptors() -> [NSSortDescriptor]{
+        return [NSSortDescriptor(key: "title", ascending: true, selector: #selector(NSString.localizedStandardCompare))]
+    }
 }
 
 #Preview {
