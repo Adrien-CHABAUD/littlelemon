@@ -19,7 +19,7 @@ struct Menu: View {
                     Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
                 }
                 
-                FetchedObjects() { (dishes: [Dish]) in
+                FetchedObjects(sortDescriptors: buildSortDescriptors()) { (dishes: [Dish]) in
                     List {
                         ForEach(dishes) { dish in
                             DishItem(dish: dish)
