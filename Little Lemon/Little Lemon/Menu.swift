@@ -41,6 +41,7 @@ struct Menu: View {
         
         let task = URLSession.shared.dataTask(with: urlRequest) {data,response,error in
             if let data = data {
+                
                 if let fullMenu = try? JSONDecoder().decode(MenuList.self, from: data){
                     for dish in fullMenu.menu {
                         let newDish = Dish(context: viewContext)
@@ -49,7 +50,6 @@ struct Menu: View {
                         newDish.descriptionDish = dish.description
                         newDish.category = dish.category
                         newDish.image = dish.image
-                        newDish.id = dish.id
                     }
                     try? viewContext.save()
                 }
