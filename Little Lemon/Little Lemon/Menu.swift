@@ -15,6 +15,8 @@ struct Menu: View {
     var body: some View {
         NavigationStack {
             VStack {
+                Header()
+                
                 VStack {
                     Hero()
                         .frame(maxHeight: 180)

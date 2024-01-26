@@ -38,6 +38,6 @@ extension Font {
     }
     
     static func highlightText() -> Font {
-        return Font.custom("Karla", size: 14).weight(.medium)
+        return Font.custom("Karla", size: 20).weight(.medium)
     }
 }

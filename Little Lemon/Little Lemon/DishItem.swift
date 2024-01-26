@@ -16,30 +16,34 @@ struct DishItem: View {
             VStack {
                 Text(dish.title ?? "")
                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                    .font(.sectionCategories())
+                    .foregroundColor(Color.secondary4)
                 
                 Spacer(minLength: 10)
                 
                 Text(dish.descriptionDish ?? "")
                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                    .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+                    .font(.paragraphText())
+                    .foregroundColor(Color.secondary4)
                 
                 Spacer(minLength: 5)
                 
                 Text("$" + (dish.price ?? ""))
                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-
-                AsyncImage(url: URL(string: dish.image ?? " ")){ image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                    
-                } placeholder: {
-                    ProgressView()
-                }
-                    .frame(maxWidth: 90, maxHeight: 90)
-                    .clipShape(Rectangle())
-
+                    .font(.highlightText())
+                    .foregroundColor(Color.secondary4)
             }
+            
+            AsyncImage(url: URL(string: dish.image ?? " ")){ image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                
+            } placeholder: {
+                ProgressView()
+            }
+                .frame(maxWidth: 90, maxHeight: 90)
+                .clipShape(Rectangle())
         }
         .padding(.vertical)
         .frame(maxHeight: 150)
