@@ -16,12 +16,15 @@ struct Menu: View {
         NavigationStack {
             VStack {
                 VStack {
-                    Text("Little Lemon")
-                    Text("Chicago")
-                    Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
+                    Hero()
+                        .frame(maxHeight: 180)
+                    
+                    TextField("Search Menu", text: $searchText)
+                        .textFieldStyle(.roundedBorder)
+
                 }
-                
-                TextField("Search Menu", text: $searchText)
+                .padding()
+                .background(Color.primary1)
                 
                 FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptors()) { (dishes: [Dish]) in
                     List {
