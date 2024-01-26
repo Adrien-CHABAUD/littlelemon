@@ -23,10 +23,14 @@ struct Onboarding: View {
     var body: some View {
         NavigationStack {
             VStack {
-                    
-                TextField("First Name", text: $firstName)
-                TextField("Last Name", text: $lastName)
-                TextField("Email", text: $email)
+                Header()
+                //Hero()
+                
+                VStack {
+                    TextField("First Name", text: $firstName)
+                    TextField("Last Name", text: $lastName)
+                    TextField("Email", text: $email)
+                }
                 
                 Button(action: {
                     if(!firstName.isEmpty || !lastName.isEmpty || !email.isEmpty && ValidateEmail(email: email)) {
@@ -36,7 +40,7 @@ struct Onboarding: View {
                         UserDefaults.standard.set(email, forKey: kEmail)
                         UserDefaults.standard.set(true, forKey: kIsLoggedIn)
                         isLoggedIn = true
-
+                        
                     } else {
                         isLoggedIn = false
                     }
