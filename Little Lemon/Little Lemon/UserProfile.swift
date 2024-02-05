@@ -15,45 +15,52 @@ struct UserProfile: View {
     @Environment(\.presentationMode) var presentation
     
     var body: some View {
-        VStack {
-            HStack {
-                Image("profile-image-placeholder")
+        ScrollView(.vertical) {
+            VStack {
+                HStack {
+                    Image("profile-image-placeholder")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxHeight: 75)
+                        .clipShape(Circle())
+                        .padding(.trailing)
+                    
+                    Button(action: {}, label: {Text("Change")})
+                        .buttonStyle(ButtonPrimary())
+                    Button(action: {}, label: {Text("Delete")})
+                        .buttonStyle(ButtonReversed())
+                }
                 
-                Button(action: {}, label: {Text("Change")})
-                    .buttonStyle(ButtonPrimary())
-                Button(action: {}, label: {Text("Delete")})
-                    .buttonStyle(ButtonReversed())
+                VStack {
+                    Text("First Name")
+                        .onboardingTextStyle()
+                    TextField("First Name", text: $firstName)
+                }
+                
+                VStack {
+                    Text("Last Name")
+                        .onboardingTextStyle()
+                    TextField("Last Name", text: $lastName)
+                }
+                
+                VStack {
+                    Text("Email")
+                        .onboardingTextStyle()
+                    TextField("Email", text: $email)
+                }
+                
+                Button{
+                    UserDefaults.standard.set(false, forKey: "kIsLoggedIn")
+                    self.presentation.wrappedValue.dismiss()
+                } label: {
+                    Text("Logout")
+                }
+                
+                Spacer()
             }
-            
-            VStack {
-                Text("First Name")
-                    .onboardingTextStyle()
-                TextField("First Name", text: $firstName)
-            }
-            
-            VStack {
-                Text("Last Name")
-                    .onboardingTextStyle()
-                TextField("Last Name", text: $lastName)
-            }
-            
-            VStack {
-                Text("Email")
-                    .onboardingTextStyle()
-                TextField("Email", text: $email)
-            }
-            
-            Button{
-                UserDefaults.standard.set(false, forKey: "kIsLoggedIn")
-                self.presentation.wrappedValue.dismiss()
-            } label: {
-                Text("Logout")
-            }
-            
-            Spacer()
+            .textFieldStyle(.roundedBorder)
+            .padding()
         }
-        .textFieldStyle(.roundedBorder)
-        .padding()
     }
 }
 

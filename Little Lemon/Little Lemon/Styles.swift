@@ -69,7 +69,7 @@ struct ButtonPrimary: ButtonStyle {
         configuration.label
             .foregroundStyle(configuration.isPressed ? Color.primary1 : .white)
             .padding(10)
-            .background(configuration.isPressed ? Color.primary1 : .white)
+            .background(configuration.isPressed ? .white : Color.primary1)
             .clipShape(RoundedRectangle(cornerRadius: 8.0))
             .overlay(
                 RoundedRectangle(cornerRadius: 8.0)
