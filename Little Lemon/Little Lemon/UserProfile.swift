@@ -15,7 +15,8 @@ struct UserProfile: View {
     @Environment(\.presentationMode) var presentation
     
     var body: some View {
-        ScrollView(.vertical) {
+        VStack {
+            Spacer()
             VStack {
                 HStack {
                     Image("profile-image-placeholder")
@@ -29,6 +30,7 @@ struct UserProfile: View {
                         .buttonStyle(ButtonPrimary())
                     Button(action: {}, label: {Text("Delete")})
                         .buttonStyle(ButtonReversed())
+                    Spacer()
                     
                 }
                 
@@ -53,21 +55,29 @@ struct UserProfile: View {
             .textFieldStyle(.roundedBorder)
             .padding()
             
-            Button{
-                UserDefaults.standard.set(false, forKey: "kIsLoggedIn")
-                self.presentation.wrappedValue.dismiss()
-            } label: {
-                Text("Logout")
-            }
-            .buttonStyle(ButtonStyleYellow())
+            Spacer()
             
-            Button{
-                UserDefaults.standard.set(firstName, forKey: "firstNameKey")
-                UserDefaults.standard.set(lastName, forKey: "lastNameKey")
-                UserDefaults.standard.set(email, forKey: "emailKey")
-            } label: {
-                Text("Save Changes")
+            VStack {
+                Button{
+                    UserDefaults.standard.set(false, forKey: "kIsLoggedIn")
+                    self.presentation.wrappedValue.dismiss()
+                } label: {
+                    Text("Logout")
+                }
+                .buttonStyle(ButtonStyleYellow())
+                
+                
+                Button{
+                    UserDefaults.standard.set(firstName, forKey: "firstNameKey")
+                    UserDefaults.standard.set(lastName, forKey: "lastNameKey")
+                    UserDefaults.standard.set(email, forKey: "emailKey")
+                } label: {
+                    Text("Save Changes")
+                }
+                .buttonStyle(ButtonPrimary())
+                .padding(.top, 10)
             }
+            Spacer()
         }
     }
 }
