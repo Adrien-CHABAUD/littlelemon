@@ -8,20 +8,39 @@
 import SwiftUI
 
 struct UserProfile: View {
-    let firstName = UserDefaults.standard.string(forKey: "firstNameKey")
-    let lastName = UserDefaults.standard.string(forKey: "lastNameKey")
-    let email = UserDefaults.standard.string(forKey: "emailKey")
+    @State var firstName = UserDefaults.standard.string(forKey: "firstNameKey") ?? " "
+    @State var lastName = UserDefaults.standard.string(forKey: "lastNameKey") ?? " "
+    @State var email = UserDefaults.standard.string(forKey: "emailKey")  ?? " "
     
     @Environment(\.presentationMode) var presentation
     
     var body: some View {
         VStack {
-            Text("Personal Information")
-            Image("profile-image-placeholder")
+            HStack {
+                Image("profile-image-placeholder")
+                
+                Button(action: {}, label: {Text("Change")})
+                    .buttonStyle()
+                Button(action: {}, label: {Text("Delete")})
+            }
             
-            Text("\(firstName ?? "")")
-            Text("\(lastName ?? "")")
-            Text("\(email ?? "")")
+            VStack {
+                Text("First Name")
+                    .onboardingTextStyle()
+                TextField("First Name", text: $firstName)
+            }
+            
+            VStack {
+                Text("Last Name")
+                    .onboardingTextStyle()
+                TextField("Last Name", text: $lastName)
+            }
+            
+            VStack {
+                Text("Email")
+                    .onboardingTextStyle()
+                TextField("Email", text: $email)
+            }
             
             Button{
                 UserDefaults.standard.set(false, forKey: "kIsLoggedIn")
@@ -32,6 +51,8 @@ struct UserProfile: View {
             
             Spacer()
         }
+        .textFieldStyle(.roundedBorder)
+        .padding()
     }
 }
 

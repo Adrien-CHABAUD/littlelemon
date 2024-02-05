@@ -41,3 +41,26 @@ extension Font {
         return Font.custom("Karla", size: 20).weight(.medium)
     }
 }
+
+extension Text {
+    func onboardingTextStyle() -> some View {
+        self
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .foregroundColor(Color.primary1)
+            .font(.custom("Karla-Bold", size: 13))
+    }
+}
+
+struct ButtonStyleYellow: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(maxWidth: .infinity)
+            .foregroundStyle(configuration.isPressed ? .white : .black)
+            .padding(10)
+            .background(configuration.isPressed ? Color.primary1 : Color.primary2)
+            .clipShape(RoundedRectangle(cornerRadius: 8.0))
+            .padding(.horizontal)
+        
+    }
+}
+
