@@ -11,6 +11,10 @@ struct Menu: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @State var searchText = ""
+    @State var startersEnabled = true
+    @State var mainEnabled = true
+    @State var drinkEnabled = true
+    @State var dessertEnabled = true
     
     var body: some View {
         NavigationStack {
@@ -27,6 +31,23 @@ struct Menu: View {
                 }
                 .padding()
                 .background(Color.primary1)
+                
+                Text("Order for DELIVERY!")
+                    .font(.sectionTitle())
+                    .foregroundStyle(.secondary4)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.top)
+                    .padding(.leading)
+                
+                ScrollView(.horizontal){
+                    HStack {
+                        Toggle("Starters", isOn: $startersEnabled)
+                        Toggle("Main", isOn: $mainEnabled)
+                        Toggle("Desserts", isOn: $dessertEnabled)
+                        Toggle("Drinks", isOn: $drinkEnabled)
+                    }
+                    .toggleStyle(CustomToggle())
+                }
                 
                 FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptors()) { (dishes: [Dish]) in
                     List {
