@@ -47,6 +47,7 @@ struct Menu: View {
                         Toggle("Drinks", isOn: $drinkEnabled)
                     }
                     .toggleStyle(CustomToggle())
+                    .padding(.horizontal)
                 }
                 
                 FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptors()) { (dishes: [Dish]) in
