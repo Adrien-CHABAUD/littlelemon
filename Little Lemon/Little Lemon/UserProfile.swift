@@ -20,8 +20,9 @@ struct UserProfile: View {
                 Image("profile-image-placeholder")
                 
                 Button(action: {}, label: {Text("Change")})
-                    .buttonStyle()
+                    .buttonStyle(ButtonStyleYellow())
                 Button(action: {}, label: {Text("Delete")})
+                    .buttonStyle()
             }
             
             VStack {

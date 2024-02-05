@@ -64,3 +64,17 @@ struct ButtonStyleYellow: ButtonStyle {
     }
 }
 
+struct ButtonPrimary: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .foregroundStyle(configuration.isPressed ? .white : Color.primary1)
+            .padding(10)
+            .background(configuration.isPressed ? Color.primary1 : .white)
+            .clipShape(RoundedRectangle(cornerRadius: 8.0))
+            .overlay(
+                RoundedRectangle(cornerRadius: 8.0)
+                    .stroke(Color.primary1, lineWidth: 1)
+            )
+            .padding(.horizontal)
+    }
+}
