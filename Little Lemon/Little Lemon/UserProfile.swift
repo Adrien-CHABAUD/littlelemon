@@ -29,6 +29,7 @@ struct UserProfile: View {
                         .buttonStyle(ButtonPrimary())
                     Button(action: {}, label: {Text("Delete")})
                         .buttonStyle(ButtonReversed())
+                    
                 }
                 
                 VStack {
@@ -48,18 +49,25 @@ struct UserProfile: View {
                         .onboardingTextStyle()
                     TextField("Email", text: $email)
                 }
-                
-                Button{
-                    UserDefaults.standard.set(false, forKey: "kIsLoggedIn")
-                    self.presentation.wrappedValue.dismiss()
-                } label: {
-                    Text("Logout")
-                }
-                
-                Spacer()
             }
             .textFieldStyle(.roundedBorder)
             .padding()
+            
+            Button{
+                UserDefaults.standard.set(false, forKey: "kIsLoggedIn")
+                self.presentation.wrappedValue.dismiss()
+            } label: {
+                Text("Logout")
+            }
+            .buttonStyle(ButtonStyleYellow())
+            
+            Button{
+                UserDefaults.standard.set(firstName, forKey: "firstNameKey")
+                UserDefaults.standard.set(lastName, forKey: "lastNameKey")
+                UserDefaults.standard.set(email, forKey: "emailKey")
+            } label: {
+                Text("Save Changes")
+            }
         }
     }
 }
