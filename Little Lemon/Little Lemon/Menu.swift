@@ -15,6 +15,7 @@ struct Menu: View {
     @State var mainEnabled = true
     @State var drinkEnabled = true
     @State var dessertEnabled = true
+    @State var keyboardVisible = false
     
     var body: some View {
         NavigationStack {
@@ -22,12 +23,16 @@ struct Menu: View {
                 Header()
                 
                 VStack {
-                    Hero()
-                        .frame(maxHeight: 180)
+                    if !keyboardVisible{
+                        withAnimation{
+                            Hero()
+                                .frame(maxHeight: 180)
+                        }
+                    }
                     
                     TextField("Search Menu", text: $searchText)
                         .textFieldStyle(.roundedBorder)
-
+                    
                 }
                 .padding()
                 .background(Color.primary1)
@@ -60,6 +65,17 @@ struct Menu: View {
             }
         }.onAppear(){
             getMenuData()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { notification in
+            withAnimation {
+                self.keyboardVisible = true
+            }
+            
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { notification in
+            withAnimation {
+                self.keyboardVisible = false
+            }
         }
     }
     
@@ -97,11 +113,15 @@ struct Menu: View {
         return [NSSortDescriptor(key: "title", ascending: true, selector: #selector(NSString.localizedStandardCompare))]
     }
     
-    func buildPredicate() -> NSPredicate {
-        if(!searchText.isEmpty){
-            return NSPredicate(format: "title CONTAINS[cd] %@", searchText)
-        }
-        return NSPredicate(value: true)
+    func buildPredicate() -> NSCompoundPredicate {
+        let search = searchText == "" ? NSPredicate(value: true) : NSPredicate(format: "title CONTAINS[cd] %@", searchText)
+        let starters = !startersEnabled ? NSPredicate(format: "category != %@", "starters") : NSPredicate(value: true)
+        let mains = !mainEnabled ? NSPredicate(format: "category != %@", "mains") : NSPredicate(value: true)
+        let desserts = !dessertEnabled ? NSPredicate(format: "category != %@", "desserts") : NSPredicate(value: true)
+        let drinks = !drinkEnabled ? NSPredicate(format: "category != %@", "drinks") : NSPredicate(value: true)
+        
+        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [search, starters, mains, desserts, drinks])
+        return compoundPredicate
     }
 }
 
