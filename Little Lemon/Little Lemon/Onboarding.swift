@@ -26,12 +26,26 @@ struct Onboarding: View {
                 VStack {
                     Header()
                     Hero()
+                        .padding()
+                        .background(Color.primary1)
+                        .frame(maxWidth: .infinity)
                     
                     VStack {
+                        Text("First Name*")
+                            .onboardingTextStyle()
                         TextField("First Name", text: $firstName)
+                        
+                        Text("Last Name*")
+                            .onboardingTextStyle()
                         TextField("Last Name", text: $lastName)
+                        
+                        Text("Email*")
+                            .onboardingTextStyle()
                         TextField("Email", text: $email)
+                            .keyboardType(.emailAddress)
                     }
+                    .textFieldStyle(.roundedBorder)
+                    .padding()
                     
                     Button(action: {
                         if(!firstName.isEmpty || !lastName.isEmpty || !email.isEmpty && ValidateEmail(email: email)) {
@@ -48,6 +62,7 @@ struct Onboarding: View {
                     }, label: {
                         Text("Register")
                     })
+                    .buttonStyle(ButtonStyleYellow())
                     .navigationDestination(isPresented: $isLoggedIn) {
                         Home()
                     }
